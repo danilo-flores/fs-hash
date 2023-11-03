@@ -1,0 +1,23 @@
+<div class="card">
+  <h1>FS Hash</h1>
+
+  <div class="container">
+    <div class="input-form">
+      <label for="content">Content</label>
+      <input type="text" id="content" placeholder="Enter the filename" #contentInput />
+      <button (click)="saveContent(contentInput.value)">Store Content</button>
+    </div>
+
+    <div class="input-form">
+      <label for="hash">Hash</label>
+      <input type="text" id="hash" placeholder="Enter the filename" #hashInput />
+      <button (click)="getContent(hashInput.value)">Get Hash</button>
+    </div>
+  </div>
+
+  <div class="result">
+    <h3>Retrieved Content:</h3>
+    <p>{{ content ? content : 'No retrieved content' }}</p>
+  </div>
+
+</div>
