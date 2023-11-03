@@ -37,7 +37,6 @@ body {
 .input-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 320px;
   margin: 0 24px;

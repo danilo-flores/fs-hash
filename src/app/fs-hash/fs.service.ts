@@ -10,21 +10,25 @@ export const DIRECTORY_PATH = new InjectionToken<string>('directoryPath');
 
 export class FS {
   private directoryPath: string;
-  private directory: Map<string, string> = new Map();
+  private directory: Map<string, string> = new Map(); // mapped directory for the storage
 
   constructor(@Inject(DIRECTORY_PATH) directoryPath: string) {
     this.directoryPath = directoryPath;
   }
 
-  store(filename: string): string {
+  store(filename: string, content: string): string {
     const filePath: string = `${this.directoryPath}/${filename}`;
-    const hash = MD5(filename).toString();
-    this.directory.set(filePath, hash);
+    const hash = MD5(filename).toString(); // hash the content
+    this.directory.set(filePath, content);
+
     return hash;
   }
 
   get(filename: string): string | undefined {
     const filePath: string = `${this.directoryPath}/${filename}`;
-    return this.directory.get(filePath);
+    const fetchedData: string | undefined = this.directory.get(filePath);
+    console.log(fetchedData);  // log the data for the test code
+
+    return fetchedData;
   }
 }
